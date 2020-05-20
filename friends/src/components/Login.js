@@ -1,4 +1,5 @@
 import React from 'react';
+import axiosWithAuth from '../utils/axioWithAuth';
 
 class Login extends React.Component {
     constructor(){
@@ -18,12 +19,19 @@ class Login extends React.Component {
           }
         });
       };
-
+      login = e => {
+          e.preventDefault();
+          axiosWithAuth()
+            .post('/api/login', this.state.credentials)
+            .then(res => {
+                localStorage.setItem('token', res.data.payload);
+            })
+      }
 
     render(){
         return(
            <div>
-               <form>
+               <form onSubmit={this.login}>
                    {/* username */}
                    <input
                         placeholder='username'
