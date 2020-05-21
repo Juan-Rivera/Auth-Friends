@@ -14,8 +14,10 @@ function App() {
         <div className='App'>
           <nav>
             <Link to='/login'>Login</Link>
+            <Link to='/protected'>Friends List</Link>
           </nav>
           <Route path='/login' component={Login} />
+
           <PrivateRoute path='/protected' component={FriendsList} />
         </div>
       </Router>

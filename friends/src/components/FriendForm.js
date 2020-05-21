@@ -20,6 +20,7 @@ class FriendForm extends React.Component{
     addFriend = e => {
         e.preventDefault();
         const newFriend = {
+            id: Date.now(),
             name: this.state.name,
             age: this.state.age,
             email: this.state.email,
@@ -34,7 +35,7 @@ class FriendForm extends React.Component{
     render(){
         return(
             <div>
-                <form>
+                <form onSubmit={this.addFriend}>
                     <label>
                         Name:
                         <input
@@ -59,6 +60,7 @@ class FriendForm extends React.Component{
                             onChange={this.handleChanges}
                         />
                     </label>
+                    <button>Add Friend!</button>
                 </form>
             </div>
         )
